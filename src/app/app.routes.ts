@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { EquipmentListComponent } from './equipment-list/equipment-list.component';
 
 export const routes: Routes = [
   {
@@ -16,8 +15,8 @@ export const routes: Routes = [
   },
   {
     path: 'equipment',
-    component: EquipmentListComponent,
-    title: 'Equipment',
+    loadChildren: () =>
+      import('./equipment/equipment.routes').then((m) => m.equipmentRoutes),
   },
   {
     path: '**',
